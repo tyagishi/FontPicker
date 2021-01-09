@@ -21,7 +21,7 @@ class FontPickerDelegate {
 
 }
 
-struct FontPicker: View {
+public struct FontPicker: View {
     let labelString: String
     @Binding var font:NSFont
     
@@ -31,7 +31,7 @@ struct FontPicker: View {
         self.labelString = label
         self._font = selection
     }
-    var body: some View {
+    public var body: some View {
         HStack {
             Text(labelString)
             Button(action: {
