@@ -9,7 +9,7 @@ movie will be placed here.
 ## example code
 FontPicker can be used like ColorPicker.
 
-'''
+```
 struct ContentView: View {
     @State private var font: NSFont = NSFont.systemFont(ofSize: 24)
     var body: some View {
@@ -20,7 +20,7 @@ struct ContentView: View {
         }
     }
 }
-'''
+```
 
 ### small improvement
 As usual user can close FontPanel with close button of FontPanel.
