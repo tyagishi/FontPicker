@@ -6,6 +6,8 @@ Wrapped NSFontPanel for SwiftUI.
  
 ![FontPickerExample](https://user-images.githubusercontent.com/6419800/104111843-9e082d80-532a-11eb-8118-0b081f82b127.gif)
  
+ for working example, please refer to https://github.com/tyagishi/FontPickerExample
+ 
 ## example code
 FontPicker can be used like ColorPicker.
 
