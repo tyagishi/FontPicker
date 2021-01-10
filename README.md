@@ -3,9 +3,7 @@
 Wrapped NSFontPanel for SwiftUI.
 
 ## UI 
-<video width="600" controls>
-  <source src=https://user-images.githubusercontent.com/6419800/104111654-e4a85880-5327-11eb-8c68-944eb2ed19dc.mp4" type="video/mp4">
-</video>
+https://user-images.githubusercontent.com/6419800/104111654-e4a85880-5327-11eb-8c68-944eb2ed19dc.mp4
 
 ## example code
 FontPicker can be used like ColorPicker.
