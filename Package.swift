@@ -24,8 +24,5 @@ let package = Package(
         .target(
             name: "FontPicker",
             dependencies: []),
-        .testTarget(
-            name: "FontPickerTests",
-            dependencies: ["FontPicker"]),
     ]
 )
