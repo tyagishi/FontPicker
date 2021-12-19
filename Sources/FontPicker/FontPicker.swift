@@ -15,7 +15,7 @@ class FontPickerDelegate {
     }
     
     @objc
-    func changeFont(_ id: Any ){
+    func changeFont(_ id: Any) {
         parent.fontSelected()
     }
 
@@ -23,40 +23,44 @@ class FontPickerDelegate {
 
 public struct FontPicker: View {
     let labelString: String
-    @Binding var font:NSFont
     
-    @State var fontPickerDelegate:FontPickerDelegate? = nil
+    @Binding var font: NSFont
+    @State var fontPickerDelegate: FontPickerDelegate? = nil
     
     public init(_ label: String, selection: Binding<NSFont>) {
         self.labelString = label
         self._font = selection
     }
+    
     public var body: some View {
         HStack {
             Text(labelString)
-            Button(action: {
+            
+            Button {
                 if NSFontPanel.shared.isVisible {
                     NSFontPanel.shared.orderOut(nil)
                     return
                 }
+                
                 self.fontPickerDelegate = FontPickerDelegate(self)
                 NSFontManager.shared.target = self.fontPickerDelegate
                 NSFontPanel.shared.setPanelFont(self.font, isMultiple: false)
                 NSFontPanel.shared.orderBack(nil)
-            }, label: {
-                Image(systemName: "textformat").resizable().scaledToFit()
-            })
+            } label: {
+                Image(systemName: "textformat")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(2)
+            }
         }
     }
     
     func fontSelected() {
         self.font = NSFontPanel.shared.convert(self.font)
-        //NSFontPanel.shared.orderOut(nil)
     }
 }
 
 struct FontPicker_Previews: PreviewProvider {
-    
     static var previews: some View {
         FontPicker("font", selection: .constant(NSFont.systemFont(ofSize: 24)))
     }
