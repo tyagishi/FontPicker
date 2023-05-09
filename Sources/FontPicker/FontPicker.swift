@@ -39,7 +39,10 @@ public struct FontPicker: View {
             Button {
                 if NSFontPanel.shared.isVisible {
                     NSFontPanel.shared.orderOut(nil)
-                    return
+                    
+                    if NSFontManager.shared.target === self.fontPickerDelegate {
+                        return
+                    }
                 }
                 
                 self.fontPickerDelegate = FontPickerDelegate(self)
