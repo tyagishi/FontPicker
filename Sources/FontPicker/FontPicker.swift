@@ -22,19 +22,23 @@ class FontPickerDelegate {
 }
 
 public struct FontPicker: View {
-    let labelString: String
+    let label: LocalizedStringKey?
     
     @Binding var font: NSFont
-    @State var fontPickerDelegate: FontPickerDelegate? = nil
+    @State var fontPickerDelegate: FontPickerDelegate?
     
-    public init(_ label: String, selection: Binding<NSFont>) {
-        self.labelString = label
+    public init(_ titlekey: LocalizedStringKey? = nil, selection: Binding<NSFont>) {
+        self.label = titlekey
         self._font = selection
     }
     
     public var body: some View {
         HStack {
-            Text(labelString)
+            if let label {
+                Text(label)
+            } else {
+                EmptyView()
+            }
             
             Button {
                 if NSFontPanel.shared.isVisible {
@@ -65,6 +69,9 @@ public struct FontPicker: View {
 
 struct FontPicker_Previews: PreviewProvider {
     static var previews: some View {
-        FontPicker("font", selection: .constant(NSFont.systemFont(ofSize: 24)))
+        Group {
+            FontPicker("font", selection: .constant(NSFont.systemFont(ofSize: 24)))
+            FontPicker(selection: .constant(NSFont.systemFont(ofSize: 24)))
+        }
     }
 }
